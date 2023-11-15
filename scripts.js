@@ -14,8 +14,20 @@ function getVideo() {
       video.play();
     })
     .catch(err => {
-      console.log(err);
+      console.error(`Local Media Stream not loaded correctly: `, err);
     })
+}
+
+function paintToCanvas() {
+  const width = video.videoWidth;
+  const height = video.videoHeight;
+  console.log(width, height);
+  canvas.width = width;
+  canvas.height = height;
+
+  setInterval(() => {
+    ctx.drawImage(video, 0, 0);
+  }, 16);
 }
 
 getVideo();
